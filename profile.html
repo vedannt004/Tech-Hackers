@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GovGenie | Profile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0f1a 0%, #1e1e30 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 0.8s ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    nav .logo img {
+      height: 100px;
+      margin-right: 10px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+      font-size: 1.4rem;
+    }
+
+    nav .nav-links a:hover {
+      color: #ffd700;
+    }
+
+    .logout-btn {
+      background-color: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 2rem;
+    }
+
+    .logout-btn:hover {
+      background-color: #e63c3c;
+    }
+
+    .profile-page {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .profile-page h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: fadeUp 1s ease-out forwards;
+    }
+
+    .profile-info {
+      background-color: #2b2b40;
+      border-radius: 10px;
+      padding: 1.5rem;
+      max-width: 400px;
+      margin: 0 auto;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      animation: fadeUp 1s ease-out forwards;
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .profile-info h3 {
+      margin-bottom: 1rem;
+    }
+
+    .profile-info p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+    .issues-list {
+      margin-top: 2rem;
+    }
+
+    .issues-list h3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .issue-card {
+      background-color: #2b2b40;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      color: #fff;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .issue-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .issue-card h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .issue-card span {
+      color: #ffd700;
+      font-weight: bold;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="civic.png" alt="GovGenie Logo" />
+      GovGenie
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="profile.html">Profile</a>
+    </div>
+  </nav>
+
+  <div class="profile-page" id="profile">
+    <h1>User Profile</h1>
+
+    <div class="profile-info">
+      <h3>User Information</h3>
+      <p>Email: user@example.com</p>
+      <p>Status: Logged In</p>
+      <p>Total Issues Reported: <span>5</span></p>
+    </div>
+
+    <!-- Logout Button (separate from navbar) -->
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+
+    <div class="issues-list">
+      <h3>My Reported Issues</h3>
+
+      <div class="issue-card">
+        <h4>Issue 1: Broken Street Light</h4>
+        <p>Status: <span>In Progress</span></p>
+        <p>Location: Location 1</p>
+      </div>
+
+      <div class="issue-card">
+        <h4>Issue 2: Pothole on Road</h4>
+        <p>Status: <span>Resolved</span></p>
+        <p>Location: Location 2</p>
+      </div>
+
+      <div class="issue-card">
+        <h4>Issue 3: Garbage Dump</h4>
+        <p>Status: <span>Submitted</span></p>
+        <p>Location: Location 3</p>
+      </div>
+
+      <div class="issue-card">
+        <h4>Issue 4: Flooded Drain</h4>
+        <p>Status: <span>In Progress</span></p>
+        <p>Location: Location 4</p>
+      </div>
+
+      <div class="issue-card">
+        <h4>Issue 5: Damaged Pavement</h4>
+        <p>Status: <span>Resolved</span></p>
+        <p>Location: Location 5</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Animate issue cards on scroll
+    const cards = document.querySelectorAll('.issue-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      const loginMsg = document.getElementById("loginMsg");
+      if (loginMsg) loginMsg.remove(); // Remove notification if exists
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+
+</html>
+

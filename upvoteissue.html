@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upvote Issues | GovGenie</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0f1a 0%, #1e1e30 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    nav .logo img {
+      height: 80px;
+      margin-right: 10px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      color: #ffd700;
+    }
+
+    .upvote-container {
+      padding: 3rem 2rem;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .upvote-container h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .issue-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .issue-card {
+      background-color: #2b2b40;
+      padding: 1.5rem;
+      border-radius: 15px;
+      max-width: 300px;
+      width: 100%;
+      text-align: left;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      animation: slideUp 0.7s ease both;
+      opacity: 0;
+      position: relative;
+    }
+
+    .issue-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .issue-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .vote-section {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .upvote-btn {
+      background-color: #ffd700;
+      color: #000;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .upvote-btn:hover {
+      background-color: #e5c100;
+    }
+
+    .vote-count {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="civic.png" alt="GovGenie Logo" />
+      GovGenie
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="profile.html">Profile</a>
+    </div>
+  </nav>
+
+  <section class="upvote-container">
+    <h2>Upvote Public Issues</h2>
+    <div class="issue-grid">
+      <div class="issue-card">
+        <h3>Overflowing Dustbin in Park</h3>
+        <p>Needs urgent cleaning before health hazard arises.</p>
+        <div class="vote-section">
+          <button class="upvote-btn" onclick="upvote(this)">Upvote</button>
+          <span class="vote-count">12</span>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <h3>Street Flooding</h3>
+        <p>Drainage blocked after last rain in Sector 18.</p>
+        <div class="vote-section">
+          <button class="upvote-btn" onclick="upvote(this)">Upvote</button>
+          <span class="vote-count">25</span>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <h3>Noise Pollution at Night</h3>
+        <p>Repeated loudspeakers after 10 PM in Zone 5.</p>
+        <div class="vote-section">
+          <button class="upvote-btn" onclick="upvote(this)">Upvote</button>
+          <span class="vote-count">8</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Animate cards on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.issue-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+        }, i * 200);
+      });
+    });
+
+    // Handle upvote button
+    function upvote(button) {
+      const voteCountSpan = button.nextElementSibling;
+      let count = parseInt(voteCountSpan.textContent);
+      count += 1;
+      voteCountSpan.textContent = count;
+      button.disabled = true;
+      button.textContent = 'Upvoted';
+      button.style.backgroundColor = '#aaa';
+    }
+  </script>
+
+</body>
+</html>

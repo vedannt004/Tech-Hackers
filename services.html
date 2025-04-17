@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovGenie | Services</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f0f1a, #1e1e30);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideDown 1s ease;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav .logo img {
+      height: 100px;
+      margin-right: 10px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 1.4rem;
+    }
+
+    nav .nav-links a:hover {
+      color: #ffd700;
+    }
+
+    .container {
+      padding: 3rem;
+    }
+
+    .intro {
+      background-color: #2b2b40;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .intro h1 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+    .service-box {
+      background-color: #2b2b40;
+      margin: 1rem 0;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .service-box:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .service-box:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .service-box:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+
+    .service-box h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .service-box p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      padding: 0.5rem 1rem;
+      background-color: #ffd700;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="civic.png" alt="GovGenie Logo">
+      GovGenie
+    </div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="profile.html">Profile</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="intro">
+      <h1>What is GovGenie?</h1>
+      <p>GovGenie is a citizen-centric web/mobile app that empowers individuals to:</p>
+      <p>📸 Report issues in their neighborhood by simply clicking a photo</p>
+      <p>📍 Automatically tag the location using GPS</p>
+      <p>📤 Submit the report to concerned civic authorities</p>
+      <p>📈 Enable public upvotes, helping highlight the most urgent issues</p>
+      <p>🔄 Track progress with status updates like: <strong>Submitted → In Progress → Resolved</strong></p>
+    </div>
+
+    <div class="service-box">
+      <h2>Post an Issue</h2>
+      <p>Report any civic issue in your locality by uploading a description and tagging your GPS location.</p>
+      <button class="button" onclick="postIssue()">Post Issue</button>
+    </div>
+
+    <div class="service-box">
+      <h2>Issue Resolution Status</h2>
+      <p>Check if your posted issue is <strong>Submitted</strong>, <strong>In Progress</strong>, or <strong>Resolved</strong>.</p>
+      <button class="button" onclick="checkStatus()">Check Status</button>
+    </div>
+
+    <div class="service-box">
+      <h2>Upvote Issues</h2>
+      <p>Support issues raised by others in your community. The most upvoted issues get prioritized.</p>
+      <button class="button" onclick="upvoteIssue()">Upvote</button>
+    </div>
+  </div>
+
+  <script>
+    function postIssue() {
+      window.location.href = "postissue.html"; // Replace with your actual form page
+    }
+
+    function checkStatus() {
+      window.location.href = "checkstatus.html"; // Replace with your actual status page
+    }
+
+    function upvoteIssue() {
+      window.location.href = "upvoteissue.html"; // Replace with your actual upvote page
+    }
+  </script>
+</body>
+
+</html>

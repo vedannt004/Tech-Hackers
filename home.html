@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GovGenie | Home</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1e1e30 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeDown 1s ease-in-out;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        nav .logo img {
+            height: 100px;
+            margin-right: 15px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            transition: color 0.3s;
+            font-size: 1.4rem;
+        }
+
+        nav .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem;
+            background-image: url('https://cdn.pixabay.com/photo/2020/10/26/09/10/technology-5682706_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem; /* adds space below the h1 */
+    transform: translateY(30px) rotate(-3deg);
+}
+
+.hero p {
+    font-size: 1.5rem; /* makes the paragraph text larger */
+}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1,
+        .hero p {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+        .hero p {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .features {
+            padding: 3rem 2rem;
+            background-color: #1e1e30;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: #2b2b40;
+            border-radius: 10px;
+            padding: 1.5rem;
+            max-width: 300px;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="civic.png" alt="GovGenie Logo" />
+            GovGenie
+        </div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            
+            <a href="services.html">Services</a>
+            <a href="profile.html">Profile</a>
+        </div>
+    </nav>
+
+    <div class="hero" id="home">
+        <div>
+            <h1>Welcome to GovGenie</h1>
+            <p>From Complaint to Completion</p>
+        </div>
+        
+
+    </div>
+
+    <section class="features" id="services">
+        <h2>Explore Our Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                
+                <h3>Public Transparency</h3>
+                <p>Track proposals and results with clear and open data access.</p>
+            </div>
+            <div class="feature-card">
+                
+                <h3>Post an Issue</h3>
+                <p>Raise concerns and governance issues directly within the platform.</p>
+            </div>
+            <div class="feature-card">
+                
+                <h3>Upvote Issues</h3>
+                <p>Engage with the community by upvoting relevant proposals and issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll animation for feature cards
+        const cards = document.querySelectorAll(".feature-card");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        cards.forEach(card => observer.observe(card));
+
+        function logout() {
+            alert('Logged out!');
+            window.location.href = 'home.html';
+        }
+        // Show login status if user just logged in
+window.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+    if (isLoggedIn) {
+        document.getElementById("login-status").textContent = "✅ You are logged in!";
+        localStorage.removeItem("loggedIn");
+    }
+});
+
+    </script>
+</body>
+
+</html>
