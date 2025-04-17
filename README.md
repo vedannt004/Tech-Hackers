@@ -1,6 +1,6 @@
 # 🚀 GovGenie – Empowering Citizens to Report Civic Issues
 
-**Team Name:** CodeCivic  
+**Team Name:** Tech Hackers 
 **Project Title:** GovGenie – A Real-Time Civic Issue Reporting Platform
 
 ---
